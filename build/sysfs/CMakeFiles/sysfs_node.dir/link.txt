@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/sysfs_node.dir/src/main.cc.o  -o /home/xillinux/cobot/catkin_ws/devel/lib/sysfs/sysfs_node -rdynamic 

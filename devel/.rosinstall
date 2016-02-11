@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/xillinux/cobot/catkin_ws/devel/setup.sh

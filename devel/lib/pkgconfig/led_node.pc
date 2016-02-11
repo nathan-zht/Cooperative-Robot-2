@@ -1,0 +1,8 @@
+prefix=/home/xillinux/cobot/catkin_ws/devel
+
+Name: led_node
+Description: Description of led_node
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/xillinux/cobot/catkin_ws/devel/lib 
+Requires: 

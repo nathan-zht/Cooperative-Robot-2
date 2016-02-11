@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<title> Cobot Master Robot Interface </title>
+	</head>
+<body>
+	<script src="script.js"></script>
+	<div>
+		<table>
+			<th colspan="2"> Cobot Master Status </th>
+			<tr>
+				<td>Status</td>
+				<td id="stats_master"> IDLE </td>
+			</tr>
+			<tr>
+				<td>Encoder Left</td>
+				<td id="enc_left_master"> 0 </td>
+			</tr>
+			<tr>
+				<td>Encoder Right</td>
+				<td id="enc_right_master"> 0 </td>
+			</tr>
+			
+		</table>
+	</div>
+	<div>
+		<table>
+			<th colspan="2"> Cobot Slave Status </th>
+			<tr>
+				<td>Status</td>
+				<td id="stats_slave"> IDLE </td>
+			</tr>
+			<tr>
+				<td>Encoder Left</td>
+				<td id="enc_left_slave"> 0 </td>
+			</tr>
+			<tr>
+				<td>Encoder Right</td>
+				<td id="enc_right_slave"> 0 </td>
+			</tr>
+			
+		</table>
+	</div>
+	<div>
+		<table>
+			<th colspan="2"> Robot Command </th>
+			<tr>
+				<td>Rotate</td>
+				<td class="button"> 
+					<button type="button" onclick="sendCommand('rotate')">Rotate</button> 
+				</td>
+			</tr>
+			<tr>
+				<td>Cross</td>
+				<td class="button"> 
+					<button type="button" onclick="sendCommand('cross')">Cross</button> 
+				</td>
+			</tr>		
+			<tr>
+				<td>Go to X,Y</td>
+				<td>
+					<table>
+						<td>
+							<input type="text" id="x_pos" value="X">
+							<br>
+							<br>
+							<input type="text" id="y_pos" value="Y">
+						</td>
+						<td class="button"> 
+							<button class="go" type="button" onclick="sendCommand('goto',document.getElementById('x_pos').value,document.getElementById('y_pos').value)">Go</button> 
+						</td>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>Command Status</td>
+				<td id="cmd_status">Nothing being sent yet</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

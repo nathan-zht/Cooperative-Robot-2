@@ -1,0 +1,35 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+td.button{
+  text-align: center;
+}
+th{
+  width: 50%;
+  background-color: #336699;
+  text-align: left;
+  padding: 8px;
+} 
+td{
+  width: 50%;
+  border: 1px solid #999999;
+  text-align: left;
+  padding: 8px;
+} 
+tr:nth-child(even) {
+  background-color: #999999;
+}
+button.go {
+  width: 100%;
+}
+button {
+  background-color: #E18A07; 
+  width: 50%;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+}
+
