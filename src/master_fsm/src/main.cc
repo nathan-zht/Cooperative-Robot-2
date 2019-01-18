@@ -5,14 +5,20 @@ using namespace std;
 
 class State
 {
+  /*
+  purely abstract class to implement interface.
+  remember only virtual methods should be defined here.
+  These can be overriden in individual class definitions.
+  */
+  
   public:
   State(){};
-  ~State(){};
+  virtual ~State(){};
   
   virtual void doSomething1(){};
   virtual void doSomething2(){}; 
 
-}
+};
 
 class FSM
 {
@@ -33,14 +39,14 @@ class FSM
     state = newstate;
   }
   
+  //getters returning states
   State getIdle(){
     return idle;
   };
   State getManualControl(){
     return manualControl;
-  };    
-  private:
-}
+  };
+};
 
 class Idle : public State
 {
@@ -54,7 +60,7 @@ class Idle : public State
     //do something then move state
     fsm.setState(fsm.getManualControl());
   }
-}
+};
 
 class ManualControl : public State
 {
@@ -68,7 +74,7 @@ class ManualControl : public State
     //do something then move state
     fsm.setState(fsm.getIdle());
   }
-}
+};
 
 int main(int argc, char **argv){
 
