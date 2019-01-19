@@ -112,4 +112,5 @@ include_directories(
 )
 add_executable(encoder_node src/main.cc)
 target_link_libraries(encoder_node ${catkin_LIBRARIES})
+add_dependencies(encoder_node encoder_node_generate_messages_cpp)
 

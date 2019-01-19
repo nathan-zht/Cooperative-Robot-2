@@ -200,4 +200,4 @@ include_directories(
 link_directories(/usr/local/Cellar/1.0.1j /usr/local/lib/)
 add_executable(server_node src/main.cc)
 target_link_libraries(server_node ${catkin_LIBRARIES} navajo z ssl crypto)
-add_dependencies(server_node beginner_tutorials_generate_messages_cpp)
+add_dependencies(server_node server_node_generate_messages_cpp)
