@@ -62,23 +62,23 @@ class MyDynamicRepository : public DynamicRepository
 		  }
 		}commandHandler;
 
-		class encoderHandler: public DynamicPage
+		class statusHandler: public DynamicPage
 		{
 		private:
 			std::string status ;
 		public:
 		  bool getPage(HttpRequest* request, HttpResponse *response)
 		  {
-			  fromString(this->status,response);
+			  fromString("Busy",response);
 			  return true;
 		  }
-		}encoderHandler;
+		}statusHandler;
 
 	public:
 	MyDynamicRepository() : DynamicRepository()
 	{
 	  add("command",&commandHandler);
-	  add("read encoder",&encoderHandler);
+	  add("status",&statusHandler);
 	}
 };
 

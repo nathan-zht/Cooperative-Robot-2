@@ -1,8 +1,0 @@
-prefix=/home/xillinux/cobot/catkin_ws/install
-
-Name: encoder_node
-Description: Description of encoder_node
-Version: 0.0.0
-Cflags: -I/home/xillinux/cobot/catkin_ws/install/include
-Libs: -L/home/xillinux/cobot/catkin_ws/install/lib 
-Requires: roscpp message_runtime
