@@ -1,8 +1,0 @@
-prefix=/home/xillinux/cobot/catkin_ws/install
-
-Name: master_fsm
-Description: Description of master_fsm
-Version: 0.0.0
-Cflags: -I/home/xillinux/cobot/catkin_ws/install/include
-Libs: -L/home/xillinux/cobot/catkin_ws/install/lib 
-Requires: roscpp std_msgs message_runtime

@@ -1,0 +1,3 @@
+# Files/Directory to be ignored
+build/*
+devel/*
