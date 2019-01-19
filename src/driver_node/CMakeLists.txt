@@ -198,3 +198,4 @@ include_directories(
 # catkin_add_nosetests(test)
 add_executable(driver_node src/main.cc)
 target_link_libraries(driver_node ${catkin_LIBRARIES})
+add_dependencies(driver_node driver_node_generate_messages_cpp)
