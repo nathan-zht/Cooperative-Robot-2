@@ -56,10 +56,10 @@ include server_node/CMakeFiles/server_node_generate_messages_lisp.dir/progress.m
 server_node/CMakeFiles/server_node_generate_messages_lisp: /home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg/status.lisp
 
 
-/home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg/status.lisp: /opt/ros/lunar/lib/genlisp/gen_lisp.py
+/home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg/status.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 /home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg/status.lisp: /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from server_node/status.msg"
-	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg
 
 server_node_generate_messages_lisp: server_node/CMakeFiles/server_node_generate_messages_lisp
 server_node_generate_messages_lisp: /home/xillinux/cobot/catkin_ws/devel/share/common-lisp/ros/server_node/msg/status.lisp

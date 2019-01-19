@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/xillinux/cobot/catkin_ws/build
 include encoder_node/CMakeFiles/_encoder_node_generate_messages_check_deps_encoder_msg.dir/progress.make
 
 encoder_node/CMakeFiles/_encoder_node_generate_messages_check_deps_encoder_msg:
-	cd /home/xillinux/cobot/catkin_ws/build/encoder_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py encoder_node /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg 
+	cd /home/xillinux/cobot/catkin_ws/build/encoder_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py encoder_node /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg 
 
 _encoder_node_generate_messages_check_deps_encoder_msg: encoder_node/CMakeFiles/_encoder_node_generate_messages_check_deps_encoder_msg
 _encoder_node_generate_messages_check_deps_encoder_msg: encoder_node/CMakeFiles/_encoder_node_generate_messages_check_deps_encoder_msg.dir/build.make

@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/xillinux/cobot/catkin_ws/build
 include server_node/CMakeFiles/_server_node_generate_messages_check_deps_status.dir/progress.make
 
 server_node/CMakeFiles/_server_node_generate_messages_check_deps_status:
-	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py server_node /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg 
+	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py server_node /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg 
 
 _server_node_generate_messages_check_deps_status: server_node/CMakeFiles/_server_node_generate_messages_check_deps_status
 _server_node_generate_messages_check_deps_status: server_node/CMakeFiles/_server_node_generate_messages_check_deps_status.dir/build.make

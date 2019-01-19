@@ -57,15 +57,15 @@ driver_node/CMakeFiles/driver_node_generate_messages_py: /home/xillinux/cobot/ca
 driver_node/CMakeFiles/driver_node_generate_messages_py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/__init__.py
 
 
-/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/_driver_setting.py: /opt/ros/lunar/lib/genpy/genmsg_py.py
+/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/_driver_setting.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/_driver_setting.py: /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG driver_node/driver_setting"
-	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg -Idriver_node:/home/xillinux/cobot/catkin_ws/src/driver_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p driver_node -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg -Idriver_node:/home/xillinux/cobot/catkin_ws/src/driver_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p driver_node -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg
 
-/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/__init__.py: /opt/ros/lunar/lib/genpy/genmsg_py.py
+/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/__init__.py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/_driver_setting.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for driver_node"
-	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg --initpy
+	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg --initpy
 
 driver_node_generate_messages_py: driver_node/CMakeFiles/driver_node_generate_messages_py
 driver_node_generate_messages_py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/driver_node/msg/_driver_setting.py

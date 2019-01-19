@@ -57,14 +57,14 @@ server_node/CMakeFiles/server_node_generate_messages_eus: /home/xillinux/cobot/c
 server_node/CMakeFiles/server_node_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/manifest.l
 
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/msg/status.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/msg/status.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/msg/status.l: /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from server_node/status.msg"
-	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/msg
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/manifest.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for server_node"
-	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node server_node std_msgs
+	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node server_node std_msgs
 
 server_node_generate_messages_eus: server_node/CMakeFiles/server_node_generate_messages_eus
 server_node_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/server_node/msg/status.l

@@ -1,2 +1,2 @@
-beginner_tutorials:driver_node:encoder_node:http_server:server_node
+beginner_tutorials:driver_node:encoder_node:http_server:master_fsm:server_node
 -DCATKIN_DEVEL_PREFIX=/home/xillinux/cobot/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/xillinux/cobot/catkin_ws/install -G Unix Makefiles

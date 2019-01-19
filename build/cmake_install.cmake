@@ -121,6 +121,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/xillinux/cobot/catkin_ws/build/driver_node/cmake_install.cmake")
   include("/home/xillinux/cobot/catkin_ws/build/encoder_node/cmake_install.cmake")
   include("/home/xillinux/cobot/catkin_ws/build/http_server/cmake_install.cmake")
+  include("/home/xillinux/cobot/catkin_ws/build/master_fsm/cmake_install.cmake")
   include("/home/xillinux/cobot/catkin_ws/build/server_node/cmake_install.cmake")
 
 endif()

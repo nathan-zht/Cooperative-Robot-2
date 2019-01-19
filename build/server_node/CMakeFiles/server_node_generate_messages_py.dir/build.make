@@ -57,15 +57,15 @@ server_node/CMakeFiles/server_node_generate_messages_py: /home/xillinux/cobot/ca
 server_node/CMakeFiles/server_node_generate_messages_py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/__init__.py
 
 
-/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/_status.py: /opt/ros/lunar/lib/genpy/genmsg_py.py
+/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/_status.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/_status.py: /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG server_node/status"
-	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg
 
-/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/__init__.py: /opt/ros/lunar/lib/genpy/genmsg_py.py
+/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/__init__.py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/_status.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for server_node"
-	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg --initpy
+	cd /home/xillinux/cobot/catkin_ws/build/server_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg --initpy
 
 server_node_generate_messages_py: server_node/CMakeFiles/server_node_generate_messages_py
 server_node_generate_messages_py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/server_node/msg/_status.py

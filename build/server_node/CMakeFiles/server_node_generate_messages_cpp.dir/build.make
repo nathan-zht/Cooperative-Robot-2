@@ -56,11 +56,11 @@ include server_node/CMakeFiles/server_node_generate_messages_cpp.dir/progress.ma
 server_node/CMakeFiles/server_node_generate_messages_cpp: /home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h
 
 
-/home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h: /opt/ros/lunar/lib/gencpp/gen_cpp.py
+/home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 /home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h: /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg
-/home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h: /opt/ros/lunar/share/gencpp/msg.h.template
+/home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from server_node/status.msg"
-	cd /home/xillinux/cobot/catkin_ws/src/server_node && /home/xillinux/cobot/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/include/server_node -e /opt/ros/lunar/share/gencpp/cmake/..
+	cd /home/xillinux/cobot/catkin_ws/src/server_node && /home/xillinux/cobot/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xillinux/cobot/catkin_ws/src/server_node/msg/status.msg -Iserver_node:/home/xillinux/cobot/catkin_ws/src/server_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p server_node -o /home/xillinux/cobot/catkin_ws/devel/include/server_node -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 server_node_generate_messages_cpp: server_node/CMakeFiles/server_node_generate_messages_cpp
 server_node_generate_messages_cpp: /home/xillinux/cobot/catkin_ws/devel/include/server_node/status.h

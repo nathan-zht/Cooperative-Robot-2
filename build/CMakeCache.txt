@@ -272,10 +272,10 @@ beginner_tutorials_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/beginn
 beginner_tutorials_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/beginner_tutorials
 
 //The directory containing a CMake configuration file for catkin.
-catkin_DIR:PATH=/opt/ros/lunar/share/catkin/cmake
+catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
 
 //The directory containing a CMake configuration file for cpp_common.
-cpp_common_DIR:PATH=/opt/ros/lunar/share/cpp_common/cmake
+cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
 //Value Computed by CMake
 driver_node_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/driver_node
@@ -290,22 +290,22 @@ encoder_node_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/encoder_node
 encoder_node_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/encoder_node
 
 //The directory containing a CMake configuration file for gencpp.
-gencpp_DIR:PATH=/opt/ros/lunar/share/gencpp/cmake
+gencpp_DIR:PATH=/opt/ros/kinetic/share/gencpp/cmake
 
 //The directory containing a CMake configuration file for geneus.
-geneus_DIR:PATH=/opt/ros/lunar/share/geneus/cmake
+geneus_DIR:PATH=/opt/ros/kinetic/share/geneus/cmake
 
 //The directory containing a CMake configuration file for genlisp.
-genlisp_DIR:PATH=/opt/ros/lunar/share/genlisp/cmake
+genlisp_DIR:PATH=/opt/ros/kinetic/share/genlisp/cmake
 
 //The directory containing a CMake configuration file for genmsg.
-genmsg_DIR:PATH=/opt/ros/lunar/share/genmsg/cmake
+genmsg_DIR:PATH=/opt/ros/kinetic/share/genmsg/cmake
 
 //The directory containing a CMake configuration file for gennodejs.
-gennodejs_DIR:PATH=/opt/ros/lunar/share/gennodejs/cmake
+gennodejs_DIR:PATH=/opt/ros/kinetic/share/gennodejs/cmake
 
 //The directory containing a CMake configuration file for genpy.
-genpy_DIR:PATH=/opt/ros/lunar/share/genpy/cmake
+genpy_DIR:PATH=/opt/ros/kinetic/share/genpy/cmake
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/gtest
@@ -366,13 +366,19 @@ led_node_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/led_node
 led_node_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/led_node
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/lunar/lib/libxmlrpcpp.so
+lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
+
+//Value Computed by CMake
+master_fsm_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/master_fsm
+
+//Value Computed by CMake
+master_fsm_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/master_fsm
 
 //The directory containing a CMake configuration file for message_generation.
-message_generation_DIR:PATH=/opt/ros/lunar/share/message_generation/cmake
+message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
-message_runtime_DIR:PATH=/opt/ros/lunar/share/message_runtime/cmake
+message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
 
 //Value Computed by CMake
 node_example_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/node_example
@@ -381,25 +387,25 @@ node_example_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/node_example
 node_example_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/node_example
 
 //The directory containing a CMake configuration file for rosconsole.
-rosconsole_DIR:PATH=/opt/ros/lunar/share/rosconsole/cmake
+rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
 
 //The directory containing a CMake configuration file for roscpp.
-roscpp_DIR:PATH=/opt/ros/lunar/share/roscpp/cmake
+roscpp_DIR:PATH=/opt/ros/kinetic/share/roscpp/cmake
 
 //The directory containing a CMake configuration file for roscpp_serialization.
-roscpp_serialization_DIR:PATH=/opt/ros/lunar/share/roscpp_serialization/cmake
+roscpp_serialization_DIR:PATH=/opt/ros/kinetic/share/roscpp_serialization/cmake
 
 //The directory containing a CMake configuration file for roscpp_traits.
-roscpp_traits_DIR:PATH=/opt/ros/lunar/share/roscpp_traits/cmake
+roscpp_traits_DIR:PATH=/opt/ros/kinetic/share/roscpp_traits/cmake
 
 //The directory containing a CMake configuration file for rosgraph_msgs.
-rosgraph_msgs_DIR:PATH=/opt/ros/lunar/share/rosgraph_msgs/cmake
+rosgraph_msgs_DIR:PATH=/opt/ros/kinetic/share/rosgraph_msgs/cmake
 
 //The directory containing a CMake configuration file for rospy.
-rospy_DIR:PATH=/opt/ros/lunar/share/rospy/cmake
+rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
 
 //The directory containing a CMake configuration file for rostime.
-rostime_DIR:PATH=/opt/ros/lunar/share/rostime/cmake
+rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
 
 //Value Computed by CMake
 server_node_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/server_node
@@ -408,7 +414,7 @@ server_node_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/server_node
 server_node_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/server_node
 
 //The directory containing a CMake configuration file for std_msgs.
-std_msgs_DIR:PATH=/opt/ros/lunar/share/std_msgs/cmake
+std_msgs_DIR:PATH=/opt/ros/kinetic/share/std_msgs/cmake
 
 //Value Computed by CMake
 sysfs_BINARY_DIR:STATIC=/home/xillinux/cobot/catkin_ws/build/sysfs
@@ -432,7 +438,7 @@ tutorial_pkg_LIB_DEPENDS:STATIC=
 tutorial_pkg_SOURCE_DIR:STATIC=/home/xillinux/cobot/catkin_ws/src/tutorial_pkg
 
 //The directory containing a CMake configuration file for xmlrpcpp.
-xmlrpcpp_DIR:PATH=/opt/ros/lunar/share/xmlrpcpp/cmake
+xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
 
 
 ########################
@@ -536,7 +542,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -56,10 +56,10 @@ include driver_node/CMakeFiles/driver_node_generate_messages_nodejs.dir/progress
 driver_node/CMakeFiles/driver_node_generate_messages_nodejs: /home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg/driver_setting.js
 
 
-/home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg/driver_setting.js: /opt/ros/lunar/lib/gennodejs/gen_nodejs.py
+/home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg/driver_setting.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg/driver_setting.js: /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from driver_node/driver_setting.msg"
-	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg -Idriver_node:/home/xillinux/cobot/catkin_ws/src/driver_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p driver_node -o /home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg -Idriver_node:/home/xillinux/cobot/catkin_ws/src/driver_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p driver_node -o /home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg
 
 driver_node_generate_messages_nodejs: driver_node/CMakeFiles/driver_node_generate_messages_nodejs
 driver_node_generate_messages_nodejs: /home/xillinux/cobot/catkin_ws/devel/share/gennodejs/ros/driver_node/msg/driver_setting.js

@@ -1,0 +1,5 @@
+string command
+int32 coordinate_x
+int32 coordinate_y
+---
+string status

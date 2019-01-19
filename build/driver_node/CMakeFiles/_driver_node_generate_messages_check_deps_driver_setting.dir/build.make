@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/xillinux/cobot/catkin_ws/build
 include driver_node/CMakeFiles/_driver_node_generate_messages_check_deps_driver_setting.dir/progress.make
 
 driver_node/CMakeFiles/_driver_node_generate_messages_check_deps_driver_setting:
-	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py driver_node /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg 
+	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py driver_node /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg 
 
 _driver_node_generate_messages_check_deps_driver_setting: driver_node/CMakeFiles/_driver_node_generate_messages_check_deps_driver_setting
 _driver_node_generate_messages_check_deps_driver_setting: driver_node/CMakeFiles/_driver_node_generate_messages_check_deps_driver_setting.dir/build.make

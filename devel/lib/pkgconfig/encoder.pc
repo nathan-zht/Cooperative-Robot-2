@@ -1,0 +1,8 @@
+prefix=/home/xillinux/catkin_ws/devel
+
+Name: encoder
+Description: Description of encoder
+Version: 0.0.0
+Cflags: -I/home/xillinux/catkin_ws/devel/include
+Libs: -L/home/xillinux/catkin_ws/devel/lib 
+Requires: roscpp rospy std_msgs

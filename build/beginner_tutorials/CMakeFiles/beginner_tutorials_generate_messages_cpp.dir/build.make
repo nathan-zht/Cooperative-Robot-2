@@ -56,12 +56,12 @@ include beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp.d
 beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp: /home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h
 
 
-/home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/lunar/lib/gencpp/gen_cpp.py
+/home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 /home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv
-/home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/lunar/share/gencpp/msg.h.template
-/home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/lunar/share/gencpp/srv.h.template
+/home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+/home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/kinetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from beginner_tutorials/AddTwoInts.srv"
-	cd /home/xillinux/cobot/catkin_ws/src/beginner_tutorials && /home/xillinux/cobot/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials -e /opt/ros/lunar/share/gencpp/cmake/..
+	cd /home/xillinux/cobot/catkin_ws/src/beginner_tutorials && /home/xillinux/cobot/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 beginner_tutorials_generate_messages_cpp: beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp
 beginner_tutorials_generate_messages_cpp: /home/xillinux/cobot/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h

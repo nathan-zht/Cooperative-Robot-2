@@ -56,11 +56,11 @@ include encoder_node/CMakeFiles/encoder_node_generate_messages_cpp.dir/progress.
 encoder_node/CMakeFiles/encoder_node_generate_messages_cpp: /home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h
 
 
-/home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h: /opt/ros/lunar/lib/gencpp/gen_cpp.py
+/home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 /home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h: /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg
-/home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h: /opt/ros/lunar/share/gencpp/msg.h.template
+/home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from encoder_node/encoder_msg.msg"
-	cd /home/xillinux/cobot/catkin_ws/src/encoder_node && /home/xillinux/cobot/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg -Iencoder_node:/home/xillinux/cobot/catkin_ws/src/encoder_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p encoder_node -o /home/xillinux/cobot/catkin_ws/devel/include/encoder_node -e /opt/ros/lunar/share/gencpp/cmake/..
+	cd /home/xillinux/cobot/catkin_ws/src/encoder_node && /home/xillinux/cobot/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg -Iencoder_node:/home/xillinux/cobot/catkin_ws/src/encoder_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p encoder_node -o /home/xillinux/cobot/catkin_ws/devel/include/encoder_node -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 encoder_node_generate_messages_cpp: encoder_node/CMakeFiles/encoder_node_generate_messages_cpp
 encoder_node_generate_messages_cpp: /home/xillinux/cobot/catkin_ws/devel/include/encoder_node/encoder_msg.h

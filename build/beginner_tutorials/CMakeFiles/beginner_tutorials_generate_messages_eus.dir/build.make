@@ -57,14 +57,14 @@ beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_eus: /home/xi
 beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/manifest.l
 
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/srv/AddTwoInts.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/srv/AddTwoInts.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/srv/AddTwoInts.l: /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from beginner_tutorials/AddTwoInts.srv"
-	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/srv
+	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/srv
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/manifest.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for beginner_tutorials"
-	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials beginner_tutorials std_msgs
+	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials beginner_tutorials std_msgs
 
 beginner_tutorials_generate_messages_eus: beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_eus
 beginner_tutorials_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/beginner_tutorials/srv/AddTwoInts.l

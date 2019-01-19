@@ -57,14 +57,14 @@ driver_node/CMakeFiles/driver_node_generate_messages_eus: /home/xillinux/cobot/c
 driver_node/CMakeFiles/driver_node_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/manifest.l
 
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/msg/driver_setting.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/msg/driver_setting.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/msg/driver_setting.l: /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from driver_node/driver_setting.msg"
-	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg -Idriver_node:/home/xillinux/cobot/catkin_ws/src/driver_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p driver_node -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/driver_node/msg/driver_setting.msg -Idriver_node:/home/xillinux/cobot/catkin_ws/src/driver_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p driver_node -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/msg
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/manifest.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for driver_node"
-	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node driver_node std_msgs
+	cd /home/xillinux/cobot/catkin_ws/build/driver_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node driver_node std_msgs
 
 driver_node_generate_messages_eus: driver_node/CMakeFiles/driver_node_generate_messages_eus
 driver_node_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/driver_node/msg/driver_setting.l

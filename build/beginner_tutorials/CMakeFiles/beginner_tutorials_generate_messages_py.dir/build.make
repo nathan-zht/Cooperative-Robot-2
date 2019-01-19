@@ -57,15 +57,15 @@ beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_py: /home/xil
 beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/__init__.py
 
 
-/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/_AddTwoInts.py: /opt/ros/lunar/lib/genpy/gensrv_py.py
+/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/_AddTwoInts.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
 /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/_AddTwoInts.py: /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV beginner_tutorials/AddTwoInts"
-	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv
+	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv
 
-/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/__init__.py: /opt/ros/lunar/lib/genpy/genmsg_py.py
+/home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/__init__.py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/_AddTwoInts.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python srv __init__.py for beginner_tutorials"
-	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv --initpy
+	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv --initpy
 
 beginner_tutorials_generate_messages_py: beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_py
 beginner_tutorials_generate_messages_py: /home/xillinux/cobot/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/_AddTwoInts.py

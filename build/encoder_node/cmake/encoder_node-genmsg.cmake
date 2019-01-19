@@ -2,7 +2,7 @@
 
 message(STATUS "encoder_node: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iencoder_node:/home/xillinux/cobot/catkin_ws/src/encoder_node/msg;-Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iencoder_node:/home/xillinux/cobot/catkin_ws/src/encoder_node/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)

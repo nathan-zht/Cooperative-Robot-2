@@ -57,14 +57,14 @@ encoder_node/CMakeFiles/encoder_node_generate_messages_eus: /home/xillinux/cobot
 encoder_node/CMakeFiles/encoder_node_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/manifest.l
 
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/msg/encoder_msg.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/msg/encoder_msg.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/msg/encoder_msg.l: /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from encoder_node/encoder_msg.msg"
-	cd /home/xillinux/cobot/catkin_ws/build/encoder_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg -Iencoder_node:/home/xillinux/cobot/catkin_ws/src/encoder_node/msg -Istd_msgs:/opt/ros/lunar/share/std_msgs/cmake/../msg -p encoder_node -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/msg
+	cd /home/xillinux/cobot/catkin_ws/build/encoder_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xillinux/cobot/catkin_ws/src/encoder_node/msg/encoder_msg.msg -Iencoder_node:/home/xillinux/cobot/catkin_ws/src/encoder_node/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p encoder_node -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/msg
 
-/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/manifest.l: /opt/ros/lunar/lib/geneus/gen_eus.py
+/home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xillinux/cobot/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for encoder_node"
-	cd /home/xillinux/cobot/catkin_ws/build/encoder_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node encoder_node std_msgs
+	cd /home/xillinux/cobot/catkin_ws/build/encoder_node && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node encoder_node std_msgs
 
 encoder_node_generate_messages_eus: encoder_node/CMakeFiles/encoder_node_generate_messages_eus
 encoder_node_generate_messages_eus: /home/xillinux/cobot/catkin_ws/devel/share/roseus/ros/encoder_node/msg/encoder_msg.l

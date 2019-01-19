@@ -90,18 +90,18 @@ server_EXTERNAL_OBJECTS =
 
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: http_server/CMakeFiles/server.dir/src/example.cc.o
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: http_server/CMakeFiles/server.dir/build.make
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/libroscpp.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/libroscpp.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/libboost_signals.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/librosconsole.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/librosconsole_log4cxx.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/librosconsole_backend_interface.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/librosconsole.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/liblog4cxx.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/libboost_regex.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/libroscpp_serialization.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/libxmlrpcpp.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/librostime.so
-/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/lunar/lib/libcpp_common.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/librostime.so
+/home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /opt/ros/kinetic/lib/libcpp_common.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/libboost_system.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/libboost_thread.so
 /home/xillinux/cobot/catkin_ws/devel/lib/http_server/server: /usr/lib/arm-linux-gnueabihf/libboost_chrono.so

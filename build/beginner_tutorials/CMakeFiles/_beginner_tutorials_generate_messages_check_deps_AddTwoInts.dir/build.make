@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/xillinux/cobot/catkin_ws/build
 include beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_AddTwoInts.dir/progress.make
 
 beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_AddTwoInts:
-	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/lunar/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py beginner_tutorials /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv 
+	cd /home/xillinux/cobot/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py beginner_tutorials /home/xillinux/cobot/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv 
 
 _beginner_tutorials_generate_messages_check_deps_AddTwoInts: beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_AddTwoInts
 _beginner_tutorials_generate_messages_check_deps_AddTwoInts: beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_AddTwoInts.dir/build.make
