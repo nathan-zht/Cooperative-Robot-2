@@ -34,7 +34,6 @@ class Idle : public State {
     State::id = "IDLE";
   }
   void executeCommand(){
-    //do something then move state
     ROS_INFO("[Master_FSM] in idle...");
   }
   std::string getState(){
@@ -78,12 +77,10 @@ bool callbacktriggered = false;
 bool fsm(master_fsm::ServerListener::Request &req, 
   master_fsm::ServerListener::Response &res){
   //state machine here
-  //return true when service is complete
-  //res.status;
   std::string coor_x;
   std::string coor_y;
   if ((current_state->getState()) == "IDLE"){
-    res.status = "free";
+    //res.status = "free";
     if(req.command == "manual"){
       callbacktriggered = true;
       current_state = &manual;
@@ -92,9 +89,12 @@ bool fsm(master_fsm::ServerListener::Request &req,
       coor_y = req.coordinate_y;
       //current_state->executeCommand();
       ROS_INFO("[Master_FSM] Coordinate x: %d, Coordinate y: %d", req.coordinate_x, req.coordinate_y);
-      res.status = "busy" + coor_x + coor_y; //+ req.coordinate_x + req.coordinate_y;
+      res.status = "SUCCESS"; //+ req.coordinate_x + req.coordinate_y;
     }
-  } 
+  }else{
+    res.status = "NOTSUCCESS";
+  }
+  return true;
 };
 
 int main(int argc, char **argv){
