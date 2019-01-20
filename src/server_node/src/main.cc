@@ -54,11 +54,13 @@ class MyDynamicRepository : public DynamicRepository
 			      	  srv_msg.request.command = command;
 			      	  srv_msg.request.coordinate_x = 0;
 			      	  srv_msg.request.coordinate_y = 0;
+			      	  ROS_INFO("Sending command to master FSM node");
 			      	  if (client.call(srv_msg)){
-			      		ROS_INFO("Sending command to master FSM node");
 			      		if(srv_msg.response.status == "SUCCESS"){
+					      	ROS_INFO("Response received as SUCCESS");
 							fromString("Formation OK",response);
 			      		}else{
+					      	ROS_INFO("Response received as BUSY");
 							fromString("Busy",response);
 			      		}
 			      	  }else{
@@ -70,7 +72,22 @@ class MyDynamicRepository : public DynamicRepository
 			  if (request->getParameter("x_pos", x_pos) && request->getParameter("y_pos", y_pos))
 			  {
 				      ROS_INFO("Go to command received");
-					  fromString("Go to OK",response);
+			      	  srv_msg.request.command = "manual";
+			      	  srv_msg.request.coordinate_x = atoi(x_pos.c_str());
+			      	  srv_msg.request.coordinate_y = atoi(y_pos.c_str());
+			      	  ROS_INFO("Sending command to master FSM node");
+			      	  if (client.call(srv_msg)){
+			      		if(srv_msg.response.status == "SUCCESS"){
+					      	ROS_INFO("Response received as SUCCESS");
+							fromString("Go to OK",response);
+			      		}else{
+					      	ROS_INFO("Response received as BUSY");
+							fromString("Busy",response);
+			      		}
+			      	  }else{
+				      	ROS_INFO("Failed to send command to master FSM node");
+						fromString("ERROR failed to send command to master fsm node",response);
+			      	  }
 					  return true;
 			  }
 			  fromString("Unknown Command",response);
@@ -146,6 +163,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   master_status = n.subscribe("master_status", 1000, master_status_CB);
   slave_status = n.subscribe("slave_status", 1000, slave_status_CB);
+  ROS_INFO("Sending command to master FSM node");
   client = n.serviceClient<master_fsm::ServerListener>("server_listener");
 
   // Load dynamic server repository
