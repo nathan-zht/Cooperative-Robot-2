@@ -25,13 +25,13 @@ class State {
   virtual std::string getState(){};
   virtual void setCoordinate(int x, int y){};
   protected:
-  std::string id;
+  std::string state_id;
 };
 
 class Idle : public State {
   public:
   Idle(){
-    State::id = "IDLE";
+    State::state_id = "IDLE";
   }
   void executeCommand(){
     ROS_INFO("[Master_FSM] in idle...");
@@ -46,13 +46,12 @@ class ManualControl : public State{
   int x_coordinate;
   int y_coordinate;
   ManualControl(){
-    State::id = "MANUAL";
+    State::state_id = "MANUAL";
   }
   void setCoordinate(int x, int y){
     x_coordinate = x;
     y_coordinate = y;
   }
-  
   void executeCommand(){
     ROS_INFO("[Master_FSM] Executing movement to coordinate from manual input...");
     //testing
@@ -61,15 +60,44 @@ class ManualControl : public State{
     //std::cout << "Enter a new value: " << std::endl;
     //std::cin >> val;
   }
-  
   std::string getState(){
     return "MANUAL";
   }
   void setState(){}
 };
 
+class CrossFormation : public State {
+  public:
+  CrossFormation(){
+    State::state_id = "CROSS";
+  }
+  ~CrossFormation(){};
+  void executeCommand(){
+    ROS_INFO("[Master_FSM] Executing Cross Formation...");
+  }
+  std::string getState(){ 
+    return "CROSS";
+  }
+};
+
+class OrbitFormation : public State {
+  public:
+  OrbitFormation(){
+    State::state_id = "ORBIT";
+  }
+  ~OrbitFormation(){};
+  void executeCommand(){
+    ROS_INFO("[Master_FSM] Executing Orbit Formation...");
+  }
+  std::string getState(){ 
+    return "ORBIT";
+  }
+};
+
 Idle idle;
 ManualControl manual;
+CrossFormation cross;
+OrbitFormation orbit;
 State *current_state = &idle;
 
 bool callbacktriggered = false;
@@ -90,7 +118,13 @@ bool fsm(master_fsm::ServerListener::Request &req,
       //current_state->executeCommand();
       ROS_INFO("[Master_FSM] Coordinate x: %d, Coordinate y: %d", req.coordinate_x, req.coordinate_y);
       res.status = "SUCCESS"; //+ req.coordinate_x + req.coordinate_y;
-    }
+    }else if(req.command == "cross"){
+      ROS_INFO("[Master_FSM] Cross Desination Coordinates: ");      
+      res.status = "SUCCESS";
+    }else if(req.command == "orbit"){
+      ROS_INFO("[Master_FSM] Orbit Desination Coordinates: ");      
+      res.status = "SUCCESS";
+    }else {}
   }else{
     res.status = "NOTSUCCESS";
   }
