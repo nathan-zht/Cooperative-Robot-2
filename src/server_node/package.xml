@@ -54,9 +54,14 @@
   <build_depend>libnavajo</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <exec_depend>roscpp</exec_depend>
+<!--<<<<<<< 9b9c313c7e473b0bfb15edce47a3a221892b07c1:src/server_node/package.xml-->
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>libnavajo</exec_depend>
 
+=======
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+>>>>>>> reworked state machine template. State machine 2 states - idle and manual control.:build/encoder_node/catkin_generated/stamps/encoder_node/package.xml.stamp
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
