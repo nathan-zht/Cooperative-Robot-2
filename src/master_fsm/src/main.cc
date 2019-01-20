@@ -73,6 +73,8 @@ Idle idle;
 ManualControl manual;
 State *current_state = &idle;
 
+bool callbacktriggered = false;
+
 bool fsm(master_fsm::ServerListener::Request &req, 
   master_fsm::ServerListener::Response &res){
   //state machine here
@@ -83,6 +85,7 @@ bool fsm(master_fsm::ServerListener::Request &req,
   if ((current_state->getState()) == "IDLE"){
     res.status = "free";
     if(req.command == "manual"){
+      callbacktriggered = true;
       current_state = &manual;
       current_state->setCoordinate(req.coordinate_x, req.coordinate_y);
       coor_x = req.coordinate_x;
@@ -112,8 +115,15 @@ int main(int argc, char **argv){
     /*current_state->executeCommand();
     may need to be executed more than once or
     it may not be execute outside of idle*/
-    current_state = &idle;
-    loop_rate.sleep();
+   /*alternative to sleep is the callbacktriggered flag but rosinfo is unreadable
+   if (callbacktriggered == true){
+     callbacktriggered == false;
+   }else{
+     current_state = &idle;
+   }
+   */
+   current_state = &idle;
+   loop_rate.sleep();
   }
 /*
   service client node init
