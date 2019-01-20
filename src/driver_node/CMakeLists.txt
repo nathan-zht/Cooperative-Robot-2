@@ -46,12 +46,6 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
-# Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   driver_setting.msg
- )
-
 ## Generate services in the 'srv' folder
 add_service_files(
    FILES
@@ -119,6 +113,6 @@ include_directories(
 )
 
 add_executable(driver_node src/main.cc src/pwm.cc)
-target_link_libraries(driver_node ${catkin_LIBRARIES} include)
+target_link_libraries(driver_node ${catkin_LIBRARIES})
 add_dependencies(driver_node driver_node_generate_messages_cpp)
 add_dependencies(driver_node driver_node_gencpp)
