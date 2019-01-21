@@ -221,8 +221,7 @@ int main(int argc, char **argv){
   slave_status_sub = n.subscribe("slave_status", 1000, slaveStatusCallback);
   right_enc_sub = n.subscribe("right_enc", 1000, rightEncCallback);
   left_enc_sub = n.subscribe("left_enc", 1000, leftEncCallback);
-  
-  //service server node initialization
+ //service server node initialization
   ros::ServiceServer service = n.advertiseService("server_listener", fsm);
   ros::AsyncSpinner spinner(1); // Use 1 thread
   spinner.start();
