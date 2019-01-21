@@ -5,18 +5,23 @@
 #include "master_fsm/status.h"
 #include "encoder_node/encoder_msg.h"
 
-typedef struct position{
+typedef struct cobot_status{
+  std:: string state, direction;
+  int curr_ticks_left;   		// -1 indicate it is not known yet
+  int curr_ticks_right;			// -1 indicate it is not known yet
   int x;
   int y;
-} Position;
+} CobotStatus;
 
 /* variable initialization */
+bool callbacktriggered = false;
+int cm_per_ticks = 1;
 ros::Publisher master_status_pub; 
 ros::Subscriber slave_status_sub;
 ros::Subscriber left_enc_sub;
 ros::Subscriber right_enc_sub;
 master_fsm::status master_msg;
-bool callbacktriggered = false;
+CobotStatus master_status,slave_status;
 
 class State {
   /* class to implement interface.
@@ -28,12 +33,9 @@ class State {
   virtual ~State(){}; 
   virtual void executeCommand(){};
   virtual std::string getState(){};
-  virtual void setCoordinate(int x, int y){};
-  virtual position getPosition(){};
 
   protected:
   std::string state_id;
-  Position cobot_position;
 };
 
 /* State Definition */
@@ -72,15 +74,6 @@ class ManualControl : public State{
   }
   std::string getState(){
     return "MANUAL";
-  }
-  position getPosition(){
-    //dummy program for getPosition
-    master_msg.x_pos = 10;
-    master_msg.y_pos = 11;
-    State::cobot_position.x = 10; 
-    State::cobot_position.y = 11;
-    ROS_INFO("[Master_FSM] Master Position: x: %d y: %d", 10, 11);
-    return State::cobot_position;
   }
 };
 
@@ -146,7 +139,6 @@ bool fsm(master_fsm::ServerListener::Request &req, master_fsm::ServerListener::R
     if(req.command == "manual"){
       callbacktriggered = true;
       current_state = &manual;
-      current_state->setCoordinate(req.coordinate_x, req.coordinate_y);
       coor_x = req.coordinate_x;
       coor_y = req.coordinate_y;
       //current_state->executeCommand();
@@ -156,11 +148,6 @@ bool fsm(master_fsm::ServerListener::Request &req, master_fsm::ServerListener::R
     
     }else if(req.command == "cross"){
       ROS_INFO("[Master_FSM] Cross Desination Coordinates: ");      
-      res.status = "SUCCESS";
-      master_msg.state = 1;
-    
-    }else if(req.command == "orbit"){
-      ROS_INFO("[Master_FSM] Orbit Desination Coordinates: ");      
       res.status = "SUCCESS";
       master_msg.state = 1;
     
@@ -183,28 +170,57 @@ void slaveStatusCallback(const master_fsm::status& slave_status){
 }
 
 void rightEncCallback(const encoder_node::encoder_msg right_enc){
-  //ROS_INFO("[master_fsm] right encoder value: %d", right_enc->data.c_str());
-  ROS_INFO("[master_fsm] Right encoder data | ticks: %d direction", right_enc.ticks, right_enc.direction);
+  if(master_status.curr_ticks_right == -1){
+	  master_status.curr_ticks_right = right_enc.ticks;
+  }
+  ROS_INFO("[master_fsm] old Direction: %s X %d y %d",master_status.direction.c_str(), master_status.y, master_status.x);
+  if(master_status.direction == "North")
+	  master_status.y += (right_enc.ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  else if(master_status.direction == "South")
+      master_status.y -= (right_enc.ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  else if(master_status.direction == "East")
+      master_status.x += (right_enc.ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  else if(master_status.direction == "South")
+      master_status.x -= (right_enc.ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  master_status.curr_ticks_right = right_enc.ticks;
+
+  // Publish new status
+  master_msg.x_pos=master_status.x;
+  master_msg.y_pos=master_status.y;
+  master_status_pub.publish(master_msg);
+  ROS_INFO("[master_fsm] New Direction: %s X %d y %d",master_status.direction.c_str(), master_status.y, master_status.x);
 }
 
 void leftEncCallback(const encoder_node::encoder_msg left_enc){
-  ROS_INFO("[master_fsm] Left encoder data | ticks: %d direction", left_enc.ticks, left_enc.direction);
+  ROS_INFO("[master_fsm] Left encoder data | ticks: %d direction %d", left_enc.ticks, left_enc.direction);
 }
 
 int main(int argc, char **argv){
-  //ros initialization
+
+  // Initialize status for master
+  master_status.state = "Idle";
+  master_status.direction = "North";
+  master_status.curr_ticks_right = -1;
+  master_status.curr_ticks_left = -1;
+  master_status.x = 10;
+  master_status.y = 10;
+
+  slave_status.state = "Idle";
+  slave_status.direction = "North";
+  slave_status.curr_ticks_right = -1;
+  slave_status.curr_ticks_left = -1;
+  slave_status.x = 0;
+  slave_status.y = 0;
+
   ros::init(argc, argv, "master_fsm");
   ros::NodeHandle n;
-  
-  //init sleep
-  //ros::Duration().sleep may also be an option
   ros::Rate loop_rate(10); //in hz
 
   //init publishers and subscribers
   master_status_pub = n.advertise<master_fsm::status>("master_status", 1000); 
   slave_status_sub = n.subscribe("slave_status", 1000, slaveStatusCallback);
-  right_enc_sub = n.subscribe("left_enc", 1000, rightEncCallback);
-  left_enc_sub = n.subscribe("right_enc", 1000, leftEncCallback);
+  right_enc_sub = n.subscribe("right_enc", 1000, rightEncCallback);
+  left_enc_sub = n.subscribe("left_enc", 1000, leftEncCallback);
   
   //service server node initialization
   ros::ServiceServer service = n.advertiseService("server_listener", fsm);
@@ -215,7 +231,6 @@ int main(int argc, char **argv){
   
   while(ros::ok()){
     current_state->executeCommand();
-    master_status_pub.publish(master_msg);
     /*current_state->executeCommand();
         may need to be executed more than once or
     it may not be execute outside of idle*/
