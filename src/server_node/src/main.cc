@@ -1,5 +1,6 @@
-#include <signal.h> 
+#include <signal.h>
 #include <string>
+#include <sstream>
 #include "libnavajo/libnavajo.hh"
 #include "libnavajo/LogStdOutput.hh"
 #include "ros/ros.h"
@@ -37,6 +38,7 @@ ros::ServiceClient client;
 
 static void master_status_CB(const server_node::status& status);
 static void slave_status_CB(const server_node::status& status);
+static void XML_builder(Status status, std::string &resp_msg);
 
 /* Internal class declaration */
 class MyDynamicRepository : public DynamicRepository
@@ -102,8 +104,23 @@ class MyDynamicRepository : public DynamicRepository
 		public:
 		  bool getPage(HttpRequest* request, HttpResponse *response)
 		  {
-			  fromString("Busy",response);
-			  return true;
+			  std::string command, x_pos,y_pos,resp_msg;
+			  if (request->getParameter("cobot", command) && command == "slave")
+			  {
+			      	  ROS_INFO("Master status request received");
+			      	  XML_builder(slave,resp_msg);
+					  fromString(resp_msg,response);
+					  return true;
+			  }
+			  if (request->getParameter("cobot", command) && command == "master")
+			  {
+		      	  	  ROS_INFO("Slave status request received");
+			      	  XML_builder(master,resp_msg);
+					  fromString(resp_msg,response);
+					  return true;
+			  }
+			  fromString("Unknown Command",response);
+			  return false;
 		  }
 		}statusHandler;
 	public:
@@ -139,6 +156,20 @@ void slave_status_CB(const server_node::status& status)
 	ROS_INFO("Slave status: %s X_pos=%d y_pos=%d",slave.status_str.c_str(),slave.pos_x,slave.pos_y);
 }
 
+void XML_builder(Status status, std::string &resp_msg){
+	std::stringstream ss;
+	resp_msg  = "<COBOT>\n\t<STATUS>";
+	resp_msg += status.status_str;
+	resp_msg += "</STATUS>\n\t<X_POS>";
+	ss << status.pos_x;
+	resp_msg += ss.str();
+	resp_msg += "</X_POS>\n\t<Y_POS>";
+	ss.str(std::string()); // clear the string stream buffer
+	ss << status.pos_y;;
+	resp_msg += ss.str();
+	resp_msg += "</Y_POS>\n</COBOT>";
+}
+
 /***********************************************************************/
 int main(int argc, char **argv)
 {
@@ -151,7 +182,7 @@ int main(int argc, char **argv)
 
   // Load local server repository
   webServer = new WebServer;
-  LocalRepository myLocalRepo("", "/home/xillinux/cobot/catkin_ws/html");
+  LocalRepository myLocalRepo("", "/home/xillinux/cobot/catkin_ws_fredd/html");
   webServer->addRepository(&myLocalRepo);
 
   // Set server port
