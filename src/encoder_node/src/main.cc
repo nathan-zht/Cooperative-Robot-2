@@ -1,11 +1,11 @@
-#include <iostream>
-#include <fstream>
+#include <stdio.h>
 #include <string>
+#include <sstream>
 #include <sys/stat.h>
 #include "ros/ros.h"
 #include "encoder_node/encoder_msg.h"
 
-std::ifstream sysfs;
+FILE* sysfs;
 
 bool timer_trip=0;;
 
@@ -19,18 +19,24 @@ bool fileExists(const std::string& filename)
     return false;
 }
 
-int enc_read(const std::string ENC, encoder_node::encoder_msg enc_msg){
+int enc_read(const std::string ENC, encoder_node::encoder_msg *enc_msg){
 	std::string path = "/dev/" + ENC;
-	if(fileExists(path)){
-		sysfs.open(path.c_str());
-	}
-	else{
+	sysfs = fopen(path.c_str(),"r");
+	if(sysfs == NULL){
 		ROS_ERROR("%s didn't exist",path.c_str());
 		return -1;
 	}
-	int data = sysfs.get();
-	enc_msg.direction = (data % 0x80000000) >> 31;
-	enc_msg.ticks = data % 0x7fffffff;
+	long int data;
+	fscanf(sysfs,"%ld",&data);
+	fclose(sysfs);
+	if(ENC == "ENC1"){
+		enc_msg->direction = 1 -((data & 0x80000000) >> 31);
+		enc_msg->ticks = 2147483647 - (data & 0x7fffffff);
+	}
+	else{
+		enc_msg->direction = (data & 0x80000000) >> 31;
+		enc_msg->ticks =  (data & 0x7fffffff);
+	}
 	return 0;
 }
 
@@ -56,16 +62,16 @@ int main(int argc, char **argv){
 		if(timer_trip){
 
 			ROS_INFO("[Encoder Node] Publishing left_enc...");
-			if(enc_read("ENC0",ENC0_msg) == 0)
+			if(enc_read("ENC0",&ENC0_msg) == 0)
 				left_enc.publish(ENC0_msg);
 			else
 				ROS_ERROR("[Encoder Node] Failed to read ENC0.");
 
 			ROS_INFO("[Encoder Node] Publishing right_enc...");
-			if(enc_read("ENC1",ENC1_msg) == 0)
+			if(enc_read("ENC1",&ENC1_msg) == 0)
 				right_enc.publish(ENC1_msg);
 			else
-				ROS_ERROR("[Encoder Node] Failed to read ENC0.");
+				ROS_ERROR("[Encoder Node] Failed to read ENC1.");
 
 			timer_trip = false;
 		}
