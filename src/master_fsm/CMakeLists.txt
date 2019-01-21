@@ -22,11 +22,10 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  status.msg
+)
 
 ## Generate services in the 'srv' folder
 add_service_files(
@@ -72,6 +71,4 @@ add_executable(${PROJECT_NAME} src/main.cc)
 ##add_dependencies(master_fsm $${catkin_EXPORTED_TARGETS})
 add_dependencies(master_fsm master_fsm_generate_messages_cpp)
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
