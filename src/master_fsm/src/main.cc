@@ -5,6 +5,11 @@
 #include "master_fsm/status.h"
 #include "encoder_node/encoder_msg.h"
 
+typedef struct position{
+  int x;
+  int y;
+} Position;
+
 /* variable initialization */
 ros::Publisher master_status_pub; 
 ros::Subscriber slave_status_sub;
@@ -24,9 +29,11 @@ class State {
   virtual void executeCommand(){};
   virtual std::string getState(){};
   virtual void setCoordinate(int x, int y){};
-  
+  virtual position getPosition(){};
+
   protected:
   std::string state_id;
+  Position cobot_position;
 };
 
 /* State Definition */
@@ -65,6 +72,15 @@ class ManualControl : public State{
   }
   std::string getState(){
     return "MANUAL";
+  }
+  position getPosition(){
+    //dummy program for getPosition
+    master_msg.x_pos = 10;
+    master_msg.y_pos = 11;
+    State::cobot_position.x = 10; 
+    State::cobot_position.y = 11;
+    ROS_INFO("[Master_FSM] Master Position: x: %d y: %d", 10, 11);
+    return State::cobot_position;
   }
 };
 
