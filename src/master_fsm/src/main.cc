@@ -89,9 +89,12 @@ bool fsm(master_fsm::ServerListener::Request &req,
       coor_y = req.coordinate_y;
       //current_state->executeCommand();
       ROS_INFO("[Master_FSM] Coordinate x: %d, Coordinate y: %d", req.coordinate_x, req.coordinate_y);
-      res.status = "busy" + coor_x + coor_y; //+ req.coordinate_x + req.coordinate_y;
+      res.status = "SUCCESS"; //+ req.coordinate_x + req.coordinate_y;
     }
-  } 
+  }else{
+      res.status = "NOT_SUCCESS";
+
+  }
 };
 
 int main(int argc, char **argv){
@@ -99,7 +102,7 @@ int main(int argc, char **argv){
   ros::init(argc, argv, "master_fsm");
   ros::NodeHandle n;
   
-  ros::Rate loop_rate(10); //in hz
+  ros::Rate loop_rate(5); //in hz
   //ros::Duration().sleep may also be an option
   
   //service server node init
