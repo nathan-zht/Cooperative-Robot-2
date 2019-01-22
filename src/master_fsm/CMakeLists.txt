@@ -44,7 +44,7 @@ generate_messages(
 ###################################
 
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES master_fsm
   CATKIN_DEPENDS roscpp std_msgs message_runtime
 #  DEPENDS system_lib
@@ -57,14 +57,14 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME} src/main.cc)
+add_executable(${PROJECT_NAME} src/main.cc src/state.cc)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
