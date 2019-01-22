@@ -30,12 +30,15 @@ int enc_read(const std::string ENC, encoder_node::encoder_msg *enc_msg){
 	fscanf(sysfs,"%ld",&data);
 	fclose(sysfs);
 	if(ENC == "ENC1"){
-		enc_msg->direction = 1 -((data & 0x80000000) >> 31);
-		enc_msg->ticks = 2147483647 - (data & 0x7fffffff);
+		/* Make sure that both encoder shows 1 for direction when moving forward
+		 * and ticks increase when moving forward and decrease when moving backward
+		 */
+		enc_msg->r_direction = 1 -((data & 0x80000000) >> 31);
+		enc_msg->r_ticks = 0x7fffffff - (data & 0x7fffffff);
 	}
 	else{
-		enc_msg->direction = (data & 0x80000000) >> 31;
-		enc_msg->ticks =  (data & 0x7fffffff);
+		enc_msg->l_direction = (data & 0x80000000) >> 31;
+		enc_msg->l_ticks =  (data & 0x7fffffff);
 	}
 	return 0;
 }
@@ -50,26 +53,22 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "encoder_node");
 	ros::NodeHandle n;
 	ros::Timer timer = n.createTimer(ros::Duration(0.01), timerCallback);
-	ros::Publisher left_enc = n.advertise<encoder_node::encoder_msg>("left_enc",1000);
-	ros::Publisher right_enc = n.advertise<encoder_node::encoder_msg>("right_enc",1000);
+	ros::Publisher enc_pub = n.advertise<encoder_node::encoder_msg>("master_enc",1000);
 	timer.start();
 
-	/* Declare each encoder message */
-	encoder_node::encoder_msg ENC0_msg,ENC1_msg;
+	/* Declare encoder message */
+	encoder_node::encoder_msg ENC_msg;
 	ROS_INFO("[Encoder Node] Starting...");
 	while(ros::ok()){
 		ros::spinOnce();
 		if(timer_trip){
 
-			ROS_INFO("[Encoder Node] Publishing left_enc...");
-			if(enc_read("ENC0",&ENC0_msg) == 0)
-				left_enc.publish(ENC0_msg);
-			else
+			ROS_INFO("[Encoder Node] Reading encoders...");
+			if(enc_read("ENC0",&ENC_msg) != 0)
 				ROS_ERROR("[Encoder Node] Failed to read ENC0.");
 
-			ROS_INFO("[Encoder Node] Publishing right_enc...");
-			if(enc_read("ENC1",&ENC1_msg) == 0)
-				right_enc.publish(ENC1_msg);
+			if(enc_read("ENC1",&ENC_msg) == 0)
+				enc_pub.publish(ENC_msg);
 			else
 				ROS_ERROR("[Encoder Node] Failed to read ENC1.");
 

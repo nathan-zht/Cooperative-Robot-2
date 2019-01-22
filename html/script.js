@@ -19,18 +19,32 @@ function sendCommand(command,x,y) {
   xhttp.send();
 }
 
-function updateStatus(cobot){
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-	if (xhttp.readyState === 4)  { 
-		document.getElementById('stats_master').innerHTML = xhttp.responseText;
+function updateStatus(cobot) {
+	var xhttp = new XMLHttpRequest();
+	if( cobot === "master"){
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState === 4)  { 
+				var xml = xhttp.responseXML;
+				document.getElementById('stats_master').innerHTML=xml.getElementsByTagName("STATUS")[0].childNodes[0].nodeValue;
+				document.getElementById('x_pos_master').innerHTML=xml.getElementsByTagName("X_POS")[0].childNodes[0].nodeValue;
+				document.getElementById('y_pos_master').innerHTML=xml.getElementsByTagName("Y_POS")[0].childNodes[0].nodeValue;
+			}
+		};
+	}else{
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState === 4)  { 
+				var xml = xhttp.responseXML;
+				document.getElementById('stats_slave').innerHTML=xml.getElementsByTagName("STATUS")[0].childNodes[0].nodeValue;
+				document.getElementById('x_pos_slave').innerHTML=xml.getElementsByTagName("X_POS")[0].childNodes[0].nodeValue;
+				document.getElementById('y_pos_slave').innerHTML=xml.getElementsByTagName("Y_POS")[0].childNodes[0].nodeValue;
+			}
+		}
 	}
-  };
-  xhttp.open("GET", "status?"+"cobot="+cobot, true);
-  xhttp.send();
+	xhttp.open("GET", "status?"+"cobot="+cobot, true);
+	xhttp.send();
 }
 
-window.onload = function(){
-	setInterval(updateStatus('master'),100);
-	setInterval(updateStatus('slave'),100);
-}
+window.onload = function() {
+	setInterval(function(){updateStatus('master')},100);
+	setInterval(function(){updateStatus('slave')},100);
+};
