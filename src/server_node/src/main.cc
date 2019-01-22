@@ -4,7 +4,7 @@
 #include "libnavajo/libnavajo.hh"
 #include "libnavajo/LogStdOutput.hh"
 #include "ros/ros.h"
-#include "server_node/status.h"
+#include "master_fsm/status.h"
 #include "master_fsm/ServerListener.h"
 
 /* Global variable Declaration */
@@ -21,9 +21,9 @@ static const std::string cobot_state_string[] = {
 typedef struct status{
 	cobot_state state;
 	std::string status_str;
-	int pos_x;
-	int pos_y;
-	int direction;
+	double pos_x;
+	double pos_y;
+	double direction;
 }Status;
 
 WebServer *webServer = NULL;
@@ -36,8 +36,8 @@ ros::ServiceClient client;
 
 /* Internal function declaration*/
 
-static void master_status_CB(const server_node::status& status);
-static void slave_status_CB(const server_node::status& status);
+static void master_status_CB(const master_fsm::status& status);
+static void slave_status_CB(const master_fsm::status& status);
 static void XML_builder(Status status, std::string &resp_msg);
 
 /* Internal class declaration */
@@ -50,7 +50,7 @@ class MyDynamicRepository : public DynamicRepository
 		  bool getPage(HttpRequest* request, HttpResponse *response)
 		  {
 			  std::string command, x_pos,y_pos;
-			  if (request->getParameter("command", command) && (command == "rotate" || command == "cross"))
+			  if (request->getParameter("command", command) && (command == "orbit" || command == "cross"))
 			  {
 			      	  ROS_INFO("Formation command received");
 			      	  srv_msg.request.command = command;
@@ -75,8 +75,8 @@ class MyDynamicRepository : public DynamicRepository
 			  {
 				      ROS_INFO("Go to command received");
 			      	  srv_msg.request.command = "manual";
-			      	  srv_msg.request.coordinate_x = atoi(x_pos.c_str());
-			      	  srv_msg.request.coordinate_y = atoi(y_pos.c_str());
+			      	  srv_msg.request.coordinate_x = atof(x_pos.c_str());
+			      	  srv_msg.request.coordinate_y = atof(y_pos.c_str());
 			      	  ROS_INFO("Sending command to master FSM node");
 			      	  if (client.call(srv_msg)){
 			      		if(srv_msg.response.status == "SUCCESS"){
@@ -138,22 +138,22 @@ static void exitFunction( int dummy )
 }
 
 
-void master_status_CB(const server_node::status& status)
+void master_status_CB(const master_fsm::status& status)
 {
 	master.state = cobot_state(status.state);
 	master.status_str = cobot_state_string[status.state];
 	master.pos_x = status.x_pos;
 	master.pos_y = status.y_pos;
-	ROS_INFO("Master status: %s X_pos=%d y_pos=%d",master.status_str.c_str(),master.pos_x,master.pos_y);
+	ROS_INFO("Master status: %s X_pos=%f y_pos=%f",master.status_str.c_str(),master.pos_x,master.pos_y);
 }
 
-void slave_status_CB(const server_node::status& status)
+void slave_status_CB(const master_fsm::status& status)
 {
 	slave.state = cobot_state(status.state);
 	slave.status_str = cobot_state_string[status.state];
 	slave.pos_x = status.x_pos;
 	slave.pos_y = status.y_pos;
-	ROS_INFO("Slave status: %s X_pos=%d y_pos=%d",slave.status_str.c_str(),slave.pos_x,slave.pos_y);
+	ROS_INFO("Slave status: %s X_pos=%f y_pos=%f",slave.status_str.c_str(),slave.pos_x,slave.pos_y);
 }
 
 void XML_builder(Status status, std::string &resp_msg){

@@ -77,6 +77,7 @@ OrbitFormation::OrbitFormation(){
 
 void OrbitFormation::executeCommand(){
 	ROS_INFO("[Master_FSM] Executing Orbit Formation...");
+	while(1);
 }
 
 std::string OrbitFormation::getState(){
