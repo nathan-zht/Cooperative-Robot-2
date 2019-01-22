@@ -52,7 +52,7 @@ bool fsm(master_fsm::ServerListener::Request &req, master_fsm::ServerListener::R
       res.status = "SUCCESS";
       master_msg.state = 1;
     
-    }else if(req.command == "Orbit"){
+    }else if(req.command == "orbit"){
       current_state = &orbit;
       ROS_INFO("[Master_FSM] Orbit: ");
       res.status = "SUCCESS";
@@ -72,28 +72,28 @@ void slaveStatusCallback(const master_fsm::status& slave_status){
 }
 
 void encCallback(const encoder_node::encoder_msg enc_msg){
-//  if(master_status.curr_ticks_right == -1){
-//	  master_status.curr_ticks_right = enc_msg.r_ticks;
-//  }
-//  if(master_status.curr_ticks_left == -1){
-//  	  master_status.curr_ticks_left = enc_msg.r_ticks;
-//    }
-//  ROS_INFO("[master_fsm] old Direction: %s X %d y %d",master_status.direction.c_str(), master_status.y, master_status.x);
-//  if(master_status.direction == "North")
-//	  master_status.y += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-//  else if(master_status.direction == "South")
-//      master_status.y -= (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-//  else if(master_status.direction == "East")
-//      master_status.x += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-//  else if(master_status.direction == "South")
-//      master_status.x -= (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-//  master_status.curr_ticks_right = enc_msg.ticks;
-//
-//  // Publish new status
-//  master_msg.x_pos=master_status.x;
-//  master_msg.y_pos=master_status.y;
-//  master_status_pub.publish(master_msg);
-//  ROS_INFO("[master_fsm] New Direction: %s X %d y %d",master_status.direction.c_str(), master_status.y, master_status.x);
+  if(master_status.curr_ticks_right == -1){
+	  master_status.curr_ticks_right = enc_msg.r_ticks;
+  }
+  if(master_status.curr_ticks_left == -1){
+  	  master_status.curr_ticks_left = enc_msg.r_ticks;
+    }
+  ROS_INFO("[master_fsm] Old Direction: %f X %f y %f",master_status.direction, master_status.y_pos, master_status.x_pos);
+  if(master_status.direction == 90)
+	  master_status.y_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  else if(master_status.direction == 180 )
+      master_status.y_pos -= (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  else if(master_status.direction == 0)
+      master_status.x_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  else if(master_status.direction == 270)
+      master_status.x_pos -= (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
+  master_status.curr_ticks_right = enc_msg.r_ticks;
+
+  // Publish new status
+  master_msg.x_pos=master_status.x_pos;
+  master_msg.y_pos=master_status.y_pos;
+  master_status_pub.publish(master_msg);
+  ROS_INFO("[master_fsm] New Direction: %f X %f y %f",master_status.direction, master_status.y_pos, master_status.x_pos);
 }
 
 void init_cobot_status(CobotStatus *cobot){
@@ -137,6 +137,8 @@ int main(int argc, char **argv){
 	   }
    */
    current_state = &idle;
+   master_msg.state = 0;
+   master_status_pub.publish(master_msg);
    loop_rate.sleep();
   }
 /*
