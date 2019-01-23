@@ -5,17 +5,35 @@
 #include "driver_node/driver_srv.h"
 #include "pwm.hh"
 
+/* PWM0 left wheel
+ * PWM1 right wheel
+ */
+
+//static int convert_left_wheel_forward(){
+//	double r_wheel_speed = 552.2501 * duty_forward - 27491.33;
+//	double l_wheel_duty  = (r_wheel_speed - 26957.82) / 542.0104;
+//	int l_wheel_period = (int)((double)(period)*l_wheel_duty);
+//	return l_wheel_period;
+//}
+//
+//static int convert_left_wheel_backward(){
+//	double r_wheel_speed = 621.8887 * duty_forward - 28146.63;
+//	double l_wheel_duty  = (r_wheel_speed - 27565.58) / 608.7183;
+//	int l_wheel_period = (int)((double)(period)*l_wheel_duty);
+//	return l_wheel_period;
+//}
+
 static void driver_node_info(const std::string str){
 	ROS_INFO("[Master Driver] %s",str.c_str());
 }
 
 static SYSFS_RES forward(){
 	driver_node_info("Moving forward");
-	if(pwm_set_duty("PWM1",1300000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+	if(pwm_set_duty("PWM1",1200000) == FAILED){
+		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
 	}
-	if(pwm_set_duty("PWM0",1300000) == FAILED){
+	if(pwm_set_duty("PWM0",1202984) == FAILED){
 		driver_node_info("Failed to set PWM0 dutycycle");
 		return FAILED;
 	}
@@ -24,11 +42,11 @@ static SYSFS_RES forward(){
 
 static SYSFS_RES backward(){
 	driver_node_info("Moving backward");
-	if(pwm_set_duty("PWM1",700000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+	if(pwm_set_duty("PWM1",600000) == FAILED){
+		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
 	}
-	if(pwm_set_duty("PWM0",700000) == FAILED){
+	if(pwm_set_duty("PWM0",593891) == FAILED){
 		driver_node_info("Failed to set PWM0 dutycycle");
 		return FAILED;
 	}
@@ -37,11 +55,11 @@ static SYSFS_RES backward(){
 
 static SYSFS_RES rotate_left(){
 	driver_node_info("Rotating to left");
-	if(pwm_set_duty("PWM1",1300000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+	if(pwm_set_duty("PWM1",600000) == FAILED){
+		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
 	}
-	if(pwm_set_duty("PWM0",600000) == FAILED){
+	if(pwm_set_duty("PWM0",1339295) == FAILED){
 		driver_node_info("Failed to set PWM0 dutycycle");
 		return FAILED;
 	}
@@ -50,11 +68,11 @@ static SYSFS_RES rotate_left(){
 
 static SYSFS_RES rotate_right(){
 	driver_node_info("Rotating to right");
-	if(pwm_set_duty("PWM1",600000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+	if(pwm_set_duty("PWM1",1200000) == FAILED){
+		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
 	}
-	if(pwm_set_duty("PWM0",1300000) == FAILED){
+	if(pwm_set_duty("PWM0",720264) == FAILED){
 		driver_node_info("Failed to set PWM0 dutycycle");
 		return FAILED;
 	}
@@ -64,7 +82,7 @@ static SYSFS_RES rotate_right(){
 static SYSFS_RES stop(){
 	driver_node_info("Stopping robot");
 	if(pwm_set_duty("PWM1",1000000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
 	}
 	if(pwm_set_duty("PWM0",1000000) == FAILED){
@@ -90,15 +108,12 @@ static SYSFS_RES init_pwm(){
 		return FAILED;
 	}
 	if(pwm_set_period("PWM1",2000000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
 	}
-	if(pwm_set_duty("PWM0",1000000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
-		return FAILED;
-	}
-	if(pwm_set_duty("PWM1",1000000) == FAILED){
-		driver_node_info("Failed to set PWM0 dutycycle");
+
+	if(stop() == FAILED){
+		driver_node_info("Failed to stop PWM");
 		return FAILED;
 	}
 	return SUCCESS;
@@ -150,20 +165,10 @@ bool serviceCallback(driver_node::driver_srv::Request  &req,
 			res.resp_msg = "SUCCESS";
 			return 1;
 		}
-	//}
-	//else if(cmd.compare("setspeed") == 0){
-	//	setspeed();
 	}else{
 		res.resp_msg = "UNKNOWN_CMD";
 		return 1;
 	}
-
-
-
-//
-//  ROS_INFO("request: %s", req.cmd_msg.c_str());
-//  ROS_INFO("sending back response: [%s]", "OK");
-//  res.resp_msg = "OK";
   return true;
 }
 
