@@ -1,5 +1,16 @@
 #ifndef STATE_HH
 #define STATE_HH
+#include "ros/ros.h"
+
+const double cm_per_ticks = 0.00335;
+
+typedef struct cobot_status{
+  std::string 	state;					// current robot status
+  int 			curr_ticks_left;   		// -1 indicate it is not known yet
+  int 			curr_ticks_right;		// -1 indicate it is not known yet
+  double 		direction;				// robot orientation in degree
+  double 		x_pos, y_pos;			// robot coordinate in cm
+} CobotStatus;
 
 class State {
   /* class to implement interface.
@@ -9,7 +20,7 @@ class State {
   public:
   State();
   virtual ~State();
-  virtual void executeCommand();
+  virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
   virtual std::string getState();
 
   protected:
@@ -23,7 +34,7 @@ class Idle : public State {
 	public:
 		Idle();
 		virtual ~Idle();
-		virtual void executeCommand();
+		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
 		virtual std::string getState();
 
 	protected:
@@ -35,14 +46,14 @@ class ManualControl : public State{
 	  public:
 		ManualControl();
 		virtual ~ManualControl();
-		virtual void setCoordinate(int x, int y);
-		virtual void executeCommand();
+		virtual void setCoordinate(double x, double y);
+		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
 		std::string getState();
 
 	  protected:
 		std::string state_id;
-		int x_coordinate;
-		int y_coordinate;
+		double x_coordinate;
+		double y_coordinate;
 };
 
 class CrossFormation : public State {
@@ -50,7 +61,7 @@ class CrossFormation : public State {
 	public:
 		CrossFormation();
 		virtual ~CrossFormation();
-		virtual void executeCommand();
+		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
 		virtual std::string getState();
 
 	protected:
@@ -63,7 +74,7 @@ class OrbitFormation : public State {
 	public:
 		OrbitFormation();
 		virtual ~OrbitFormation();
-		virtual void executeCommand();
+		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
 		virtual std::string getState();
 
 	protected:

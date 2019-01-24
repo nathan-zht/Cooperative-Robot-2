@@ -1,21 +1,14 @@
 #include <string>
+#include <cmath>
 #include "state.hh"
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "master_fsm/ServerListener.h"
 #include "master_fsm/status.h"
+#include "driver_node/driver_srv.h"
 #include "encoder_node/encoder_msg.h"
 
-typedef struct cobot_status{
-  std:: string 	state;					// current robot status
-  int 			curr_ticks_left;   		// -1 indicate it is not known yet
-  int 			curr_ticks_right;		// -1 indicate it is not known yet
-  double 		direction;				// robot orientation in degree
-  double 		x_pos, y_pos;			// robot coordinate in cm
-} CobotStatus;
-
 /* variable initialization */
-double cm_per_ticks = 1;
 ros::Publisher 		master_status_pub;
 ros::Subscriber 	slave_status_sub;
 ros::Subscriber 	enc_sub;
@@ -33,15 +26,12 @@ State *current_state = &idle;
 
 bool fsm(master_fsm::ServerListener::Request &req, master_fsm::ServerListener::Response &res){  
   //state machine here
-  std::string coor_x;
-  std::string coor_y;
   
   if ((current_state->getState()) == "IDLE"){
     //res.status = "free";
     if(req.command == "manual"){
       current_state = &manual;
-      coor_x = req.coordinate_x;
-      coor_y = req.coordinate_y;
+      manual.setCoordinate(req.coordinate_x,req.coordinate_y);
       ROS_INFO("[Master_FSM] Coordinate x: %d, Coordinate y: %d", req.coordinate_x, req.coordinate_y);
       res.status = "SUCCESS"; //+ req.coordinate_x + req.coordinate_y;
       master_msg.state = 1; //busy
@@ -72,28 +62,14 @@ void slaveStatusCallback(const master_fsm::status& slave_status){
 }
 
 void encCallback(const encoder_node::encoder_msg enc_msg){
-  if(master_status.curr_ticks_right == -1){
-	  master_status.curr_ticks_right = enc_msg.r_ticks;
-  }
-  if(master_status.curr_ticks_left == -1){
-  	  master_status.curr_ticks_left = enc_msg.r_ticks;
-    }
-  ROS_INFO("[master_fsm] Old Direction: %f X %f y %f",master_status.direction, master_status.y_pos, master_status.x_pos);
-  if(master_status.direction == 90)
-	  master_status.y_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-  else if(master_status.direction == 180 )
-      master_status.y_pos -= (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-  else if(master_status.direction == 0)
-      master_status.x_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
-  else if(master_status.direction == 270)
-      master_status.x_pos -= (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks;
   master_status.curr_ticks_right = enc_msg.r_ticks;
+  master_status.curr_ticks_left = enc_msg.l_ticks;
 
-  // Publish new status
-  master_msg.x_pos=master_status.x_pos;
-  master_msg.y_pos=master_status.y_pos;
-  master_status_pub.publish(master_msg);
-  ROS_INFO("[master_fsm] New Direction: %f X %f y %f",master_status.direction, master_status.y_pos, master_status.x_pos);
+//  master_status.y_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks*sin(master_status.direction);
+//  master_status.x_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks*cos(master_status.direction);
+//  master_status.curr_ticks_right = enc_msg.r_ticks;
+
+  //ROS_INFO("[master_fsm] New Direction: %f X %f y %f",master_status.direction, master_status.y_pos, master_status.x_pos);
 }
 
 void init_cobot_status(CobotStatus *cobot){
@@ -105,9 +81,15 @@ void init_cobot_status(CobotStatus *cobot){
   cobot->y_pos = 10;
 }
 
+void timerCallback(const ros::TimerEvent& e){
+	master_msg.x_pos = master_status.x_pos;
+	master_msg.y_pos = master_status.y_pos;
+	master_status_pub.publish(master_msg);
+}
+
 int main(int argc, char **argv){
 
-  // Initialize status for master
+  /* Initialize status for master */
   init_cobot_status(&master_status);
   init_cobot_status(&slave_status);
 
@@ -115,20 +97,24 @@ int main(int argc, char **argv){
   ros::NodeHandle n;
   ros::Rate loop_rate(10); //in hz
 
-  //init publishers and subscribers
+  /* init publishers and subscribers */
   master_status_pub = n.advertise<master_fsm::status>("master_status", 1000); 
   slave_status_sub = n.subscribe("slave_status", 1000, slaveStatusCallback);
   enc_sub = n.subscribe("master_enc", 1000, encCallback);
-  
-  //service server node initialization
+  ros::Timer timer = n.createTimer(ros::Duration(0.1), timerCallback);
+
+  /* service server node initialization */
   ros::ServiceServer service = n.advertiseService("server_listener", fsm);
   ros::AsyncSpinner spinner(1); // Use 1 thread
   spinner.start();
   
+
+  /* service client node init */
+  ros::ServiceClient client = n.serviceClient<driver_node::driver_srv>("master_driver");
+
   ROS_INFO("[Master_FSM] Master FSM ready");
-  
   while(ros::ok()){
-    current_state->executeCommand();
+    current_state->executeCommand(&master_status, &client);
     /*alternative to sleep is the callbacktriggered flag but rosinfo is unreadable
 	   if (callbacktriggered == true){
 		 callbacktriggered == false;
@@ -138,7 +124,6 @@ int main(int argc, char **argv){
    */
    current_state = &idle;
    master_msg.state = 0;
-   master_status_pub.publish(master_msg);
    loop_rate.sleep();
   }
 /*

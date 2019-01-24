@@ -29,7 +29,7 @@ int enc_read(const std::string ENC, encoder_node::encoder_msg *enc_msg){
 	long int data;
 	fscanf(sysfs,"%ld",&data);
 	fclose(sysfs);
-	if(ENC == "ENC1"){
+	if(ENC == "ENC0"){
 		/* Make sure that both encoder shows 1 for direction when moving forward
 		 * and ticks increase when moving forward and decrease when moving backward
 		 */

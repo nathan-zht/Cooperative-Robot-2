@@ -45,6 +45,6 @@ function updateStatus(cobot) {
 }
 
 window.onload = function() {
-	setInterval(function(){updateStatus('master')},100);
-	setInterval(function(){updateStatus('slave')},100);
+	setInterval(function(){updateStatus('master')},500);
+	setInterval(function(){updateStatus('slave')},500);
 };
