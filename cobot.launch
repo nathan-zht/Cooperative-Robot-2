@@ -1,0 +1,6 @@
+<launch>
+        <node pkg="driver_node" type="driver_node" name="master_driver_node" required="true" />
+        <node pkg="encoder_node" type="encoder_node" name="master_encoder_node" required="true"/>
+        <node pkg="master_fsm" type="master_fsm" name="master_fsm_node" required="true"/>
+        <node pkg="server_node" type="server_node" name="server_node" respawn="true"/>
+</launch>

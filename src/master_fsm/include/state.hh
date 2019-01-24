@@ -2,8 +2,6 @@
 #define STATE_HH
 #include "ros/ros.h"
 
-const double cm_per_ticks = 0.00335;
-
 typedef struct cobot_status{
   std::string 	state;					// current robot status
   int 			curr_ticks_left;   		// -1 indicate it is not known yet
