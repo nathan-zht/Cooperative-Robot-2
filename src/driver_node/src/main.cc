@@ -39,8 +39,8 @@ static SYSFS_RES backward(){
 	return SUCCESS;
 }
 
-static SYSFS_RES rotate_left(){
-	driver_node_info("Rotating to left");
+static SYSFS_RES rotate_right(){
+	driver_node_info("Rotating to right");
 	if(pwm_set_duty("PWM1",600000) == FAILED){
 		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
@@ -52,8 +52,8 @@ static SYSFS_RES rotate_left(){
 	return SUCCESS;
 }
 
-static SYSFS_RES rotate_right(){
-	driver_node_info("Rotating to right");
+static SYSFS_RES rotate_left(){
+	driver_node_info("Rotating to left");
 	if(pwm_set_duty("PWM1",1400000) == FAILED){
 		driver_node_info("Failed to set PWM1 dutycycle");
 		return FAILED;
