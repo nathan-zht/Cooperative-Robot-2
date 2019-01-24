@@ -1,4 +1,3 @@
-int8 speed
 string cmd_msg
 ---
 string resp_msg
