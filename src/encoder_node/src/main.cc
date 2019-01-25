@@ -53,7 +53,7 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "encoder_node");
 	ros::NodeHandle n;
 	ros::Timer timer = n.createTimer(ros::Duration(0.01), timerCallback);
-	ros::Publisher enc_pub = n.advertise<encoder_node::encoder_msg>("master_enc",1000);
+	ros::Publisher enc_pub = n.advertise<encoder_node::encoder_msg>("slave_enc",1000);
 	timer.start();
 
 	/* Declare encoder message */

@@ -171,7 +171,7 @@ int main(int argc, char **argv){
 	driver_node_info("Initializing ROS");
 	ros::init(argc,argv,"driver_node");
 	ros::NodeHandle n;
-	ros::ServiceServer service = n.advertiseService("master_driver", serviceCallback);
+	ros::ServiceServer service = n.advertiseService("slave_driver", serviceCallback);
 	ros::spin();
 	return 0;
 }
