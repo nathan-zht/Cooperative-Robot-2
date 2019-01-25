@@ -1,0 +1,5 @@
+<launch>
+  	<node pkg="driver_node" type="driver_node" name="slave_driver_node" required="true" />
+        <node pkg="encoder_node" type="encoder_node" name="slave_encoder_node" required="true"/>
+        <node pkg="master_fsm" type="master_fsm" name="slave_fsm_node" required="true"/>
+</launch>
