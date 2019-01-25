@@ -3,7 +3,7 @@
 #include "ros/ros.h"
 
 typedef struct cobot_status{
-  std::string 	state;					// current robot status
+  int 			state;					// current robot status
   int 			curr_ticks_left;   		// -1 indicate it is not known yet
   int 			curr_ticks_right;		// -1 indicate it is not known yet
   double 		direction;				// robot orientation in degree
@@ -18,7 +18,7 @@ class State {
   public:
   State();
   virtual ~State();
-  virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
+  virtual void executeCommand(CobotStatus *slave_status, CobotStatus *master_status, ros::ServiceClient *client, ros::ServiceClient *slave_client);
   virtual std::string getState();
 
   protected:
@@ -32,7 +32,7 @@ class Idle : public State {
 	public:
 		Idle();
 		virtual ~Idle();
-		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
+		virtual void executeCommand(CobotStatus *slave_status, CobotStatus *master_status, ros::ServiceClient *client, ros::ServiceClient *slave_client);
 		virtual std::string getState();
 
 	protected:
@@ -45,7 +45,7 @@ class ManualControl : public State{
 		ManualControl();
 		virtual ~ManualControl();
 		virtual void setCoordinate(double x, double y);
-		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
+		virtual void executeCommand(CobotStatus *slave_status, CobotStatus *master_status, ros::ServiceClient *client, ros::ServiceClient *slave_client);
 		std::string getState();
 
 	  protected:
@@ -59,7 +59,7 @@ class CrossFormation : public State {
 	public:
 		CrossFormation();
 		virtual ~CrossFormation();
-		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
+		virtual void executeCommand(CobotStatus *slave_status, CobotStatus *master_status, ros::ServiceClient *client, ros::ServiceClient *slave_client);
 		virtual std::string getState();
 
 	protected:
@@ -72,7 +72,7 @@ class OrbitFormation : public State {
 	public:
 		OrbitFormation();
 		virtual ~OrbitFormation();
-		virtual void executeCommand(CobotStatus *master_status, ros::ServiceClient *client);
+		virtual void executeCommand(CobotStatus *slave_status, CobotStatus *master_status, ros::ServiceClient *client, ros::ServiceClient *slave_client);
 		virtual std::string getState();
 
 	protected:

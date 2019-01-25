@@ -5,6 +5,8 @@
 #include "std_msgs/String.h"
 #include "master_fsm/ServerListener.h"
 #include "master_fsm/status.h"
+#include "slave_fsm/ServerListener.h"
+#include "slave_fsm/status.h"
 #include "driver_node/driver_srv.h"
 #include "encoder_node/encoder_msg.h"
 
@@ -57,28 +59,26 @@ bool fsm(master_fsm::ServerListener::Request &req, master_fsm::ServerListener::R
   return true;
 };
 
-void slaveStatusCallback(const master_fsm::status& slave_status){
-  ROS_INFO("[master_fsm] Slave state: %d", slave_status.state);
+void slaveStatusCallback(const slave_fsm::status& slave_status_msg){
+  ROS_INFO("[Master_FSM] Slave state: %d", slave_status_msg.state);
+  slave_status.state = slave_status_msg.state;
+  slave_status.x_pos = slave_status_msg.x_pos;
+  slave_status.y_pos = slave_status_msg.y_pos;
 }
 
 void encCallback(const encoder_node::encoder_msg enc_msg){
   master_status.curr_ticks_right = enc_msg.r_ticks;
   master_status.curr_ticks_left = enc_msg.l_ticks;
 
-//  master_status.y_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks*sin(master_status.direction);
-//  master_status.x_pos += (enc_msg.r_ticks-master_status.curr_ticks_right)*cm_per_ticks*cos(master_status.direction);
-//  master_status.curr_ticks_right = enc_msg.r_ticks;
-
-  //ROS_INFO("[master_fsm] New Direction: %f X %f y %f",master_status.direction, master_status.y_pos, master_status.x_pos);
 }
 
 void init_cobot_status(CobotStatus *cobot){
-  cobot->state = "Idle";
+  cobot->state = 0;
   cobot->direction = 90;
   cobot->curr_ticks_right = -1;
   cobot->curr_ticks_left = -1;
-  cobot->x_pos = 10;
-  cobot->y_pos = 10;
+  cobot->x_pos = 0;
+  cobot->y_pos = 0;
 }
 
 void timerCallback(const ros::TimerEvent& e){
@@ -91,7 +91,6 @@ int main(int argc, char **argv){
 
   /* Initialize status for master */
   init_cobot_status(&master_status);
-  init_cobot_status(&slave_status);
 
   ros::init(argc, argv, "master_fsm");
   ros::NodeHandle n;
@@ -111,10 +110,11 @@ int main(int argc, char **argv){
 
   /* service client node init */
   ros::ServiceClient client = n.serviceClient<driver_node::driver_srv>("master_driver");
+  ros::ServiceClient slave_client = n.serviceClient<slave_fsm::ServerListener>("slave_command");
 
   ROS_INFO("[Master_FSM] Master FSM ready");
   while(ros::ok()){
-    current_state->executeCommand(&master_status, &client);
+    current_state->executeCommand(&slave_status, &master_status, &client, &slave_client);
     /*alternative to sleep is the callbacktriggered flag but rosinfo is unreadable
 	   if (callbacktriggered == true){
 		 callbacktriggered == false;
