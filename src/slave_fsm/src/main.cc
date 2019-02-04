@@ -72,8 +72,8 @@ void init_cobot_status(CobotStatus *cobot){
   cobot->direction = 90;
   cobot->curr_ticks_right = -1;
   cobot->curr_ticks_left = -1;
-  cobot->x_pos = 10;
-  cobot->y_pos = 10;
+  cobot->x_pos = 75;
+  cobot->y_pos = 0;
 }
 
 void timerCallback(const ros::TimerEvent& e){
