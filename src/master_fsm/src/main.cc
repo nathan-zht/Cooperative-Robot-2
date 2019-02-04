@@ -60,7 +60,7 @@ bool fsm(master_fsm::ServerListener::Request &req, master_fsm::ServerListener::R
 };
 
 void slaveStatusCallback(const slave_fsm::status& slave_status_msg){
-  ROS_INFO("[Master_FSM] Slave state: %d", slave_status_msg.state);
+  //ROS_INFO("[Master_FSM] Slave state: %d", slave_status_msg.state);
   slave_status.state = slave_status_msg.state;
   slave_status.x_pos = slave_status_msg.x_pos;
   slave_status.y_pos = slave_status_msg.y_pos;

@@ -6,8 +6,8 @@
 /* State Definition */
 
 #define PI 3.14159265
-#define cm_per_ticks  0.0028575
-#define wheel_base 35//44.45
+#define cm_per_ticks  0.003225
+#define wheel_base 38.8//44.45
 
 driver_node::driver_srv srv_msg;
 slave_fsm::ServerListener slave_cmd;
@@ -15,7 +15,7 @@ slave_fsm::ServerListener slave_cmd;
 static void rotate_left(CobotStatus *master_status, ros::ServiceClient *driver, double target_dir, double curr_dir){
 
 	/* Rotate left */
-	int ticks_needed = (int)(fabs((target_dir-curr_dir)*PI/180)*wheel_base/(2*cm_per_ticks));
+	int ticks_needed = (int)(fabs((target_dir-curr_dir)*PI/180)*wheel_base/(cm_per_ticks)*1.1);
 	int starting_lenc_val = master_status->curr_ticks_left,
 		starting_renc_val = master_status->curr_ticks_right;
 	ROS_INFO("[Master_FSM] Calculated direction: %f direction_ticks: %d", target_dir - curr_dir,ticks_needed);
@@ -31,7 +31,7 @@ static void rotate_left(CobotStatus *master_status, ros::ServiceClient *driver, 
 static void rotate_right(CobotStatus *master_status, ros::ServiceClient *driver, double target_dir, double curr_dir){
 
 	/* Rotate right */
-	int ticks_needed = (int)(fabs((curr_dir-target_dir)*PI/180)*wheel_base/(2*cm_per_ticks));
+	int ticks_needed = (int)(fabs((curr_dir-target_dir)*PI/180)*wheel_base/(cm_per_ticks)*1.1);
 	int starting_lenc_val = master_status->curr_ticks_left,
 		starting_renc_val = master_status->curr_ticks_right;
 
@@ -160,28 +160,34 @@ void CrossFormation::executeCommand(CobotStatus *slave_status, CobotStatus *mast
 
 	/* Move slave to X+100 and Y-50 */
 	slave_cmd.request.command = "manual";
-	slave_cmd.request.coordinate_x = starting_x+100;
-	slave_cmd.request.coordinate_y = starting_y-50;
+	slave_cmd.request.coordinate_x = starting_x+75;
+	slave_cmd.request.coordinate_y = starting_y-125;
 	if(slave_client->call(slave_cmd)){
 		ROS_INFO("[Master_FSM] Command sent to slave response:%s ",slave_cmd.response.status.c_str());
+		/* wait status change */
+		while(slave_status->state == 0);
 	}else{
 		ROS_INFO("[Master_FSM] Command failed to send");
+		return;
 	}
 
 	/* Wait slave is done moving */
 	while(slave_status->state == 1);
 
 	/* Move master to X and Y-100 */
-	move_to_xy(master_status, client, starting_x, starting_y-100);
+	move_to_xy(master_status, client, starting_x, starting_y-400);
 
 	/* Move slave to X-100 and Y-50 */
 	slave_cmd.request.command = "manual";
-	slave_cmd.request.coordinate_x = starting_x-100;
-	slave_cmd.request.coordinate_y = starting_y-50;
+	slave_cmd.request.coordinate_x = starting_x-150;
+	slave_cmd.request.coordinate_y = starting_y-125;
 	if(slave_client->call(slave_cmd)){
 		ROS_INFO("[Master_FSM] Command sent to slave response:%s ",slave_cmd.response.status.c_str());
+		/* wait status change */
+		while(slave_status->state == 0);
 	}else{
 		ROS_INFO("[Master_FSM] Command failed to send");
+		return;
 	}
 	/* Wait slave is done moving */
 	while(slave_status->state == 1);
@@ -191,12 +197,15 @@ void CrossFormation::executeCommand(CobotStatus *slave_status, CobotStatus *mast
 
 	/* Move slave to X+100 and Y-50 */
 	slave_cmd.request.command = "manual";
-	slave_cmd.request.coordinate_x = starting_x+100;
-	slave_cmd.request.coordinate_y = starting_y-50;
+	slave_cmd.request.coordinate_x = starting_x+75;
+	slave_cmd.request.coordinate_y = starting_y-125;
 	if(slave_client->call(slave_cmd)){
 		ROS_INFO("[Master_FSM] Command sent to slave response:%s ",slave_cmd.response.status.c_str());
+		/* wait status change */
+		while(slave_status->state == 0);
 	}else{
 		ROS_INFO("[Master_FSM] Command failed to send");
+		return;
 	}
 	/* Wait slave is done moving */
 	while(slave_status->state == 1);
