@@ -5,15 +5,15 @@
 /* State Definition */
 
 #define PI 3.14159265
-#define cm_per_ticks  0.0028575
-#define wheel_base 35//44.45
+#define cm_per_ticks  0.003225
+#define wheel_base 38.8//44.45
 
 driver_node::driver_srv srv_msg;
 
 static void rotate_left(CobotStatus *master_status, ros::ServiceClient *client, double target_dir, double curr_dir){
 
 	/* Rotate left */
-	int ticks_needed = (int)(fabs((target_dir-curr_dir)*PI/180)*wheel_base/(2*cm_per_ticks));
+	int ticks_needed = (int)(fabs((target_dir-curr_dir)*PI/180)*wheel_base/(cm_per_ticks)*1.05);
 	int starting_lenc_val = master_status->curr_ticks_left,
 		starting_renc_val = master_status->curr_ticks_right;
 	ROS_INFO("[Master_FSM] Calculated direction: %f direction_ticks: %d", target_dir - curr_dir,ticks_needed);
